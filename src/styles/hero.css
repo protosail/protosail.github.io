@@ -26,6 +26,14 @@
   overflow: hidden;
   background: radial-gradient(ellipse at 75% 65%, #18313c, #080e14 62%);
 }
+/* WebGL can be unavailable on low-power or memory-constrained tablets. Keep the
+   horizon readable there instead of falling back to a featureless dark field. */
+.hero--graphics-fallback {
+  background:
+    radial-gradient(ellipse 56% 42% at 78% 64%, rgba(68, 116, 130, .30), transparent 72%),
+    repeating-radial-gradient(150% 50% at 48% 116%, transparent 0 2.2rem, rgba(174, 207, 210, .16) 2.35rem 2.52rem, transparent 2.7rem 5rem),
+    linear-gradient(180deg, #071018 0%, #102530 56%, #071018 100%);
+}
 .hero::before {
   content: '';
   position: absolute;

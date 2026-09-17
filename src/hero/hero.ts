@@ -18,6 +18,7 @@ export function initHero(): Ocean | null {
     ocean = createOcean(qs('[data-ocean]'), { reducedMotion, coarse: coarsePointer })
   } catch (error) {
     backdrop.classList.remove('is-ready')
+    hero.classList.add('hero--graphics-fallback')
     console.warn('hero: WebGL unavailable', error)
     return null
   }
