@@ -2,6 +2,7 @@ import { qs } from '../lib/dom.js'
 import { ScrollTrigger, coarsePointer, reducedMotion } from '../lib/scroll.js'
 import { whenVisible } from '../lib/visibility.js'
 import { createOcean, type Ocean } from './ocean.js'
+import { mountFallbackBoat } from './fallbackBoat.js'
 import { mountGhostBoat } from './ghostBoat.js'
 
 export function initHero(): Ocean | null {
@@ -18,8 +19,10 @@ export function initHero(): Ocean | null {
     ocean = createOcean(qs('[data-ocean]'), { reducedMotion, coarse: coarsePointer })
   } catch (error) {
     backdrop.classList.remove('is-ready')
-    hero.classList.add('hero--graphics-fallback')
-    console.warn('hero: WebGL unavailable', error)
+    void mountFallbackBoat(hero).catch(fallbackError => {
+      hero.classList.add('hero--graphics-fallback')
+      console.warn('hero: WebGL unavailable', error, fallbackError)
+    })
     return null
   }
   void mountGhostBoat(ocean, qs('.hero__body')).catch(error => {
