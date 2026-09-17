@@ -131,6 +131,17 @@ hr {
   margin-bottom: var(--s-8);
 }
 
+@media (max-width: 599px) {
+  :root {
+    --nav-h: 68px;
+    --nav-h-scrolled: 60px;
+    --gutter: max(1.25rem, env(safe-area-inset-left), env(safe-area-inset-right));
+  }
+
+  .section { padding-block: 3rem; }
+  .section__head, .section .rule { margin-bottom: var(--s-6); }
+}
+
 /* --- type ------------------------------------------------------------------- */
 
 .display {

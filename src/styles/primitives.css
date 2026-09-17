@@ -142,6 +142,10 @@
   border-color: var(--ink);
 }
 
+@media (pointer: coarse) {
+  .link { min-height: 44px; }
+}
+
 /* --- tag, card -------------------------------------------------------------- */
 
 .tag {

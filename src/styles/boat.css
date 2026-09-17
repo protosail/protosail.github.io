@@ -51,16 +51,20 @@
 .step__detail { max-width: 35ch; color: var(--ink-3); font-size: .875rem; line-height: 1.65; }
 .is-unavailable + .scrolly__steps .step__copy { opacity: 1; }
 @media (max-width: 859px) {
-  .scrolly__stage { top: var(--nav-h-scrolled); height: 45svh; min-height: 280px; z-index: 2; }
+  .scrolly { --stage-height: clamp(220px, 36svh, 360px); }
+  .scrolly__stage { top: var(--nav-h-scrolled); height: var(--stage-height); min-height: 0; z-index: 2; }
   .stage__scrim { background: none; }
-  .rail { bottom: .25rem; left: 0; right: 0; transform: none; max-width: none; padding-inline: var(--gutter); overflow-x: auto; scrollbar-width: none; }
+  .rail { bottom: .25rem; left: 0; right: 0; transform: none; max-width: none; padding-inline: var(--gutter); overflow-x: auto; scrollbar-width: none; scroll-padding-inline: var(--gutter); }
   .rail ol { width: max-content; gap: 1.4rem; }
   .rail a { font-size: .8125rem; }
   .scrolly__steps { width: auto; margin: 0; padding-inline: var(--gutter); clip-path: inset(var(--stage-occlusion, 0px) 0 0); }
-  .step { min-height: 66svh; align-items: flex-start; padding-block: 2rem 6rem; scroll-margin-top: calc(var(--nav-h-scrolled) + max(45svh,280px)); }
-  .step:last-child { min-height: 132svh; }
+  .step { min-height: max(24rem, 55svh); align-items: flex-start; padding-block: 1.5rem 3rem; scroll-margin-top: calc(var(--nav-h-scrolled) + var(--stage-height)); }
+  .step:last-child { min-height: max(32rem, 80svh); }
   .step__copy { opacity: 1; gap: 1rem; }
   .step__body { max-width: 46ch; font-size: 1rem; }
+}
+@media (max-width: 859px) and (max-height: 500px) {
+  .scrolly { --stage-height: 44svh; }
 }
 @media (max-height: 650px) and (min-width: 860px) {
   .scrolly__stage { min-height: 100svh; }

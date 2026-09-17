@@ -1,0 +1,304 @@
+{
+  "renderer": "Chrome/152.0.7977.84",
+  "vectors": [
+    {
+      "file": "protosail-icon-lime.svg",
+      "bounds": {
+        "x": 0.000016577103451709263,
+        "y": 0.00001846696795837488,
+        "width": 993.799560546875,
+        "height": 1000
+      },
+      "contained": true,
+      "fontIndependent": true,
+      "alignedBottoms": true,
+      "canonicalPaths": true,
+      "panelTextCentred": true
+    },
+    {
+      "file": "protosail-icon-black.svg",
+      "bounds": {
+        "x": 0.000016577103451709263,
+        "y": 0.00001846696795837488,
+        "width": 993.799560546875,
+        "height": 1000
+      },
+      "contained": true,
+      "fontIndependent": true,
+      "alignedBottoms": true,
+      "canonicalPaths": true,
+      "panelTextCentred": true
+    },
+    {
+      "file": "protosail-icon-white.svg",
+      "bounds": {
+        "x": 0.000016577103451709263,
+        "y": 0.00001846696795837488,
+        "width": 993.799560546875,
+        "height": 1000
+      },
+      "contained": true,
+      "fontIndependent": true,
+      "alignedBottoms": true,
+      "canonicalPaths": true,
+      "panelTextCentred": true
+    },
+    {
+      "file": "protosail-wordmark-black.svg",
+      "bounds": {
+        "x": 0,
+        "y": -28.767122268676758,
+        "width": 8164.38427734375,
+        "height": 1057.5341796875
+      },
+      "contained": true,
+      "fontIndependent": true,
+      "alignedBottoms": true,
+      "canonicalPaths": true,
+      "panelTextCentred": true
+    },
+    {
+      "file": "protosail-wordmark-white.svg",
+      "bounds": {
+        "x": 0,
+        "y": -28.767122268676758,
+        "width": 8164.38427734375,
+        "height": 1057.5341796875
+      },
+      "contained": true,
+      "fontIndependent": true,
+      "alignedBottoms": true,
+      "canonicalPaths": true,
+      "panelTextCentred": true
+    },
+    {
+      "file": "protosail-primary-lime-black.svg",
+      "bounds": {
+        "x": 0,
+        "y": -479.9999694824219,
+        "width": 8352.2998046875,
+        "height": 1750
+      },
+      "contained": true,
+      "fontIndependent": true,
+      "alignedBottoms": true,
+      "canonicalPaths": true,
+      "panelTextCentred": true
+    },
+    {
+      "file": "protosail-horizontal-lime-black.svg",
+      "bounds": {
+        "x": 0.00004144275953876786,
+        "y": -749.9999389648438,
+        "width": 11048.8828125,
+        "height": 2500
+      },
+      "contained": true,
+      "fontIndependent": true,
+      "alignedBottoms": true,
+      "canonicalPaths": true,
+      "panelTextCentred": true
+    },
+    {
+      "file": "protosail-stacked-lime-black.svg",
+      "bounds": {
+        "x": 0,
+        "y": 0.000060940994444536045,
+        "width": 8164.38427734375,
+        "height": 4757.5341796875
+      },
+      "contained": true,
+      "fontIndependent": true,
+      "alignedBottoms": true,
+      "canonicalPaths": true,
+      "panelTextCentred": true
+    },
+    {
+      "file": "protosail-primary-lime-white.svg",
+      "bounds": {
+        "x": 0,
+        "y": -479.9999694824219,
+        "width": 8352.2998046875,
+        "height": 1750
+      },
+      "contained": true,
+      "fontIndependent": true,
+      "alignedBottoms": true,
+      "canonicalPaths": true,
+      "panelTextCentred": true
+    },
+    {
+      "file": "protosail-horizontal-lime-white.svg",
+      "bounds": {
+        "x": 0.00004144275953876786,
+        "y": -749.9999389648438,
+        "width": 11048.8828125,
+        "height": 2500
+      },
+      "contained": true,
+      "fontIndependent": true,
+      "alignedBottoms": true,
+      "canonicalPaths": true,
+      "panelTextCentred": true
+    },
+    {
+      "file": "protosail-stacked-lime-white.svg",
+      "bounds": {
+        "x": 0,
+        "y": 0.000060940994444536045,
+        "width": 8164.38427734375,
+        "height": 4757.5341796875
+      },
+      "contained": true,
+      "fontIndependent": true,
+      "alignedBottoms": true,
+      "canonicalPaths": true,
+      "panelTextCentred": true
+    },
+    {
+      "file": "protosail-primary-black.svg",
+      "bounds": {
+        "x": 0,
+        "y": -479.9999694824219,
+        "width": 8352.2998046875,
+        "height": 1750
+      },
+      "contained": true,
+      "fontIndependent": true,
+      "alignedBottoms": true,
+      "canonicalPaths": true,
+      "panelTextCentred": true
+    },
+    {
+      "file": "protosail-horizontal-black.svg",
+      "bounds": {
+        "x": 0.00004144275953876786,
+        "y": -749.9999389648438,
+        "width": 11048.8828125,
+        "height": 2500
+      },
+      "contained": true,
+      "fontIndependent": true,
+      "alignedBottoms": true,
+      "canonicalPaths": true,
+      "panelTextCentred": true
+    },
+    {
+      "file": "protosail-stacked-black.svg",
+      "bounds": {
+        "x": 0,
+        "y": 0.000060940994444536045,
+        "width": 8164.38427734375,
+        "height": 4757.5341796875
+      },
+      "contained": true,
+      "fontIndependent": true,
+      "alignedBottoms": true,
+      "canonicalPaths": true,
+      "panelTextCentred": true
+    },
+    {
+      "file": "protosail-primary-white.svg",
+      "bounds": {
+        "x": 0,
+        "y": -479.9999694824219,
+        "width": 8352.2998046875,
+        "height": 1750
+      },
+      "contained": true,
+      "fontIndependent": true,
+      "alignedBottoms": true,
+      "canonicalPaths": true,
+      "panelTextCentred": true
+    },
+    {
+      "file": "protosail-horizontal-white.svg",
+      "bounds": {
+        "x": 0.00004144275953876786,
+        "y": -749.9999389648438,
+        "width": 11048.8828125,
+        "height": 2500
+      },
+      "contained": true,
+      "fontIndependent": true,
+      "alignedBottoms": true,
+      "canonicalPaths": true,
+      "panelTextCentred": true
+    },
+    {
+      "file": "protosail-stacked-white.svg",
+      "bounds": {
+        "x": 0,
+        "y": 0.000060940994444536045,
+        "width": 8164.38427734375,
+        "height": 4757.5341796875
+      },
+      "contained": true,
+      "fontIndependent": true,
+      "alignedBottoms": true,
+      "canonicalPaths": true,
+      "panelTextCentred": true
+    },
+    {
+      "file": "protosail-primary-panel-white.svg",
+      "bounds": {
+        "x": -180,
+        "y": -849.2000122070312,
+        "width": 9704.7861328125,
+        "height": 2698.39990234375
+      },
+      "contained": true,
+      "fontIndependent": true,
+      "alignedBottoms": true,
+      "canonicalPaths": true,
+      "panelTextCentred": true
+    },
+    {
+      "file": "protosail-stacked-panel-white.svg",
+      "bounds": {
+        "x": -575,
+        "y": -575,
+        "width": 9314.3837890625,
+        "height": 5907.5341796875
+      },
+      "contained": true,
+      "fontIndependent": true,
+      "alignedBottoms": true,
+      "canonicalPaths": true,
+      "panelTextCentred": true
+    },
+    {
+      "file": "protosail-app-lime.svg",
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1000,
+        "height": 1000
+      },
+      "contained": true,
+      "fontIndependent": true,
+      "alignedBottoms": true,
+      "canonicalPaths": true,
+      "panelTextCentred": true
+    },
+    {
+      "file": "protosail-favicon-lime.svg",
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1000,
+        "height": 1000
+      },
+      "contained": true,
+      "fontIndependent": true,
+      "alignedBottoms": true,
+      "canonicalPaths": true,
+      "panelTextCentred": true
+    }
+  ],
+  "guideWidths": [
+    1440,
+    390
+  ],
+  "pngCount": 43
+}

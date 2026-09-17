@@ -1,0 +1,153 @@
+{
+  "options": [
+    {
+      "id": "A",
+      "textCentre": 499.99996757507324,
+      "panelCentre": 500,
+      "bottomDifference": 0.00011153568630106747,
+      "noFonts": true,
+      "wingBounds": {
+        "x": 0.000004144276317674667,
+        "y": -0.00001998295192606747,
+        "width": 704.5060424804688,
+        "height": 1000
+      },
+      "vaneBounds": {
+        "x": 769.5060424804688,
+        "y": 330.0000305175781,
+        "width": 220,
+        "height": 670.0000610351562
+      },
+      "parallelCrossProduct": -5.820766091346741e-11,
+      "stemWidth": 254.79452054794518,
+      "sailWidth": 385
+    },
+    {
+      "id": "B",
+      "textCentre": 499.99996757507324,
+      "panelCentre": 500,
+      "bottomDifference": 0.0001220703125,
+      "noFonts": true,
+      "wingBounds": {
+        "x": 0.0000020721381588373333,
+        "y": 0,
+        "width": 696.58447265625,
+        "height": 999.9999389648438
+      },
+      "vaneBounds": {
+        "x": 761.58447265625,
+        "y": 330,
+        "width": 220,
+        "height": 670.0000610351562
+      },
+      "parallelCrossProduct": 2.9103830456733704e-11,
+      "stemWidth": 254.79452054794518,
+      "sailWidth": 385
+    },
+    {
+      "id": "C",
+      "textCentre": 499.99996757507324,
+      "panelCentre": 500,
+      "bottomDifference": 0.00011153568630106747,
+      "noFonts": true,
+      "wingBounds": {
+        "x": 0.000004144276317674667,
+        "y": -0.00001998295192606747,
+        "width": 704.5060424804688,
+        "height": 1000
+      },
+      "vaneBounds": {
+        "x": 769.5060424804688,
+        "y": 330.0000305175781,
+        "width": 145.59686279296875,
+        "height": 670.0000610351562
+      },
+      "parallelCrossProduct": -5.820766091346741e-11,
+      "stemWidth": 254.79452054794518,
+      "sailWidth": 254.79452054794518
+    },
+    {
+      "id": "D",
+      "textCentre": 499.99996757507324,
+      "panelCentre": 500,
+      "bottomDifference": 0.00006103515625,
+      "noFonts": true,
+      "wingBounds": {
+        "x": 0.0000020721381588373333,
+        "y": 0,
+        "width": 696.58447265625,
+        "height": 999.9999389648438
+      },
+      "vaneBounds": {
+        "x": 761.58447265625,
+        "y": 330,
+        "width": 145.596923828125,
+        "height": 670
+      },
+      "parallelCrossProduct": 2.9103830456733704e-11,
+      "stemWidth": 254.79452054794518,
+      "sailWidth": 254.79452054794518
+    },
+    {
+      "id": "E",
+      "textCentre": 499.99996185302734,
+      "panelCentre": 500,
+      "bottomDifference": 0.00005050053005106747,
+      "noFonts": true,
+      "wingBounds": {
+        "x": 0.000004144276317674667,
+        "y": -0.00001998295192606747,
+        "width": 704.5060424804688,
+        "height": 1000
+      },
+      "vaneBounds": {
+        "x": 769.5060424804688,
+        "y": 330.0000305175781,
+        "width": 128.37579345703125,
+        "height": 670
+      },
+      "parallelCrossProduct": -5.820766091346741e-11,
+      "stemWidth": 224.65753424657532,
+      "sailWidth": 224.65753424657532
+    },
+    {
+      "id": "F",
+      "textCentre": 499.99996185302734,
+      "panelCentre": 500,
+      "bottomDifference": 0.0001220703125,
+      "noFonts": true,
+      "wingBounds": {
+        "x": 0.0000020721381588373333,
+        "y": 0,
+        "width": 696.58447265625,
+        "height": 999.9999389648438
+      },
+      "vaneBounds": {
+        "x": 761.58447265625,
+        "y": 330,
+        "width": 128.375732421875,
+        "height": 670.0000610351562
+      },
+      "parallelCrossProduct": 2.9103830456733704e-11,
+      "stemWidth": 224.65753424657532,
+      "sailWidth": 224.65753424657532
+    }
+  ],
+  "pageErrors": [],
+  "mobileNoOverflow": true,
+  "productionKitUnchanged": true,
+  "protectedFiles": [
+    {
+      "path": "scripts/build-brand.mjs",
+      "sha256": "00e8193fe2c74be1639fc3ea33cdb80eb62a935ef5b644a0075a026dbfdf7bf0"
+    },
+    {
+      "path": "output/protosail-brand-kit/geometry.json",
+      "sha256": "8f80b7dcbd82d25fc502d421215fbf405b40514c851fdf78744425de92ece8b2"
+    },
+    {
+      "path": "output/protosail-brand-kit/protosail-brand-kit.zip",
+      "sha256": "ba66f79a87fc21dc3551fbba1db9e2dd37f397a12bb0956201d82f8aa61599a7"
+    }
+  ]
+}

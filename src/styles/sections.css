@@ -941,7 +941,7 @@
   }
 
   .challenge__copy .h2 {
-    max-width: 12ch;
+    max-width: 18ch;
   }
 
   .challenge__globe {
@@ -966,6 +966,7 @@
 
   .challenge__metric {
     padding-block: var(--s-5);
+    border-bottom: 1px solid var(--line-strong);
   }
 
   .challenge-timeline__head {
@@ -1003,6 +1004,7 @@
     padding-inline: var(--gutter);
     overflow-x: auto;
     scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--gutter);
     scrollbar-width: none;
   }
 
@@ -1015,4 +1017,33 @@
     scroll-snap-align: start;
   }
 
+}
+
+@media (max-width: 599px) {
+  .challenge__stage { gap: var(--s-5); }
+  .challenge__number { font-size: clamp(4rem, 20vw, 5rem); }
+  .challenge__metric + .challenge__metric { padding-left: var(--s-4); }
+  .challenge__metric-label { font-size: .875rem; }
+  .challenge-timeline__item { padding-left: var(--s-5); padding-bottom: var(--s-5); }
+  .challenge-timeline__body { padding-bottom: var(--s-4); }
+  .past { margin-top: var(--s-8); }
+  .team__groups { gap: var(--s-7); }
+  .person__gallery { aspect-ratio: 16 / 10; }
+  .person__content { gap: var(--s-4); padding: var(--s-5); }
+  .person__bio { font-size: 1rem; }
+  .update:not(.update--featured) .update__link {
+    grid-template-columns: minmax(0, 1fr) 5rem;
+  }
+  .update:not(.update--featured) .update__body { padding: var(--s-4); }
+  .update:not(.update--featured) .update__arrow {
+    position: static;
+    justify-self: end;
+    margin-top: var(--s-2);
+  }
+  .update__title { text-wrap: pretty; }
+  .contact__grid { gap: var(--s-6); }
+  .contact__list dd { overflow-wrap: anywhere; }
+  .footer { padding-bottom: max(var(--s-6), env(safe-area-inset-bottom)); }
+  .footer__links { gap: 0 var(--s-5); }
+  .footer__links a { display: inline-flex; align-items: center; min-height: 44px; }
 }

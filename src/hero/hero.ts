@@ -12,6 +12,11 @@ export function initHero(): Ocean | null {
   const backdrop = qs('[data-hero-backdrop]')
   const sizeBackdrop = () => backdrop.style.setProperty('--hero-scene-height', `${hero.offsetHeight}px`)
   sizeBackdrop()
+  // Mobile browser chrome and orientation changes can resize the hero without
+  // a ScrollTrigger refresh. Keep the ocean camera fitted to that same screen.
+  const heroSize = new ResizeObserver(sizeBackdrop)
+  heroSize.observe(hero)
+  window.addEventListener('pagehide', () => heroSize.disconnect(), { once: true })
   backdrop.classList.add('is-ready')
   let ocean: Ocean
   try {

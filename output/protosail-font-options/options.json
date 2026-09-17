@@ -1,0 +1,134 @@
+{
+  "options": [
+    {
+      "id": "A",
+      "slug": "archivo",
+      "name": "Archivo Expanded",
+      "family": "Archivo",
+      "weight": 900,
+      "width": 125,
+      "style": "Black 900 · Expanded 125%",
+      "note": "Broad and solid; closest to the original direction.",
+      "url": "https://fonts.google.com/specimen/Archivo",
+      "fontSha256": "0e094a7d3c7c4c25cf1310c4b30014f1dae9332220b1c2c88f4fa996f0b05053"
+    },
+    {
+      "id": "B",
+      "slug": "leaguespartan",
+      "name": "League Spartan",
+      "family": "League Spartan",
+      "weight": 800,
+      "style": "ExtraBold 800",
+      "note": "Classic geometric shapes with a distinctive R.",
+      "url": "https://fonts.google.com/specimen/League+Spartan",
+      "fontSha256": "2dbb6290b39ab7c48a40b18f74ca59ef48a69a015c3ea0542703f0c6ce51d617"
+    },
+    {
+      "id": "C",
+      "slug": "outfit",
+      "name": "Outfit",
+      "family": "Outfit",
+      "weight": 800,
+      "style": "ExtraBold 800",
+      "note": "Rounder curves and a softer, more open rhythm.",
+      "url": "https://fonts.google.com/specimen/Outfit",
+      "fontSha256": "fc7287273e66929776e2ba54f144fe699080bec29f61bf649d70d871468aeade"
+    },
+    {
+      "id": "D",
+      "slug": "montserrat",
+      "name": "Montserrat",
+      "family": "Montserrat",
+      "weight": 900,
+      "style": "Black 900",
+      "note": "Heavy geometric lettering with a strong, angled R.",
+      "url": "https://fonts.google.com/specimen/Montserrat",
+      "fontSha256": "0f7b311b2f3279e4eef9b2f968bcdbab6e28f4daeb1f049f4f278a902bcd82f7"
+    },
+    {
+      "id": "E",
+      "slug": "sora",
+      "name": "Sora",
+      "family": "Sora",
+      "weight": 800,
+      "style": "ExtraBold 800",
+      "note": "A more technical shape with distinctive square details.",
+      "url": "https://fonts.google.com/specimen/Sora",
+      "fontSha256": "84ff7096ae3ec6c8be47d906d1a0ba4de7f2ce78c615275c77301964a316e16c"
+    }
+  ],
+  "icon": {
+    "width": 997.665974,
+    "height": 1000,
+    "wingWidth": 712.665974,
+    "gap": 65,
+    "vaneWidth": 220,
+    "vaneTop": 330,
+    "vaneHeight": 670,
+    "alignedBottom": 1000,
+    "wingAnglesDegrees": {
+      "top": 20,
+      "leading": 70,
+      "foot": 14
+    },
+    "vaneCapAngleDegrees": 32,
+    "wingCornerRadii": [
+      25.915648,
+      48.59184,
+      70.188214,
+      129.578241
+    ],
+    "vaneCornerRadii": [
+      24,
+      95,
+      24,
+      95
+    ],
+    "wingPath": "M 677.886652 1.562905 A 25.915648 25.915648 0 0 1 712.665974 25.915648 L 712.665974 803.996913 A 48.59184 48.59184 0 0 1 675.829564 851.145368 L 87.16828 997.91511 A 70.188214 70.188214 0 0 1 4.232867 905.806003 L 260.07251 202.892363 A 129.578241 129.578241 0 0 1 337.517858 125.447015 Z",
+    "vanePath": "M 777.665974 354 A 24 24 0 0 1 814.384036 333.646846 L 953.008304 420.268902 A 95 95 0 0 1 997.665974 500.833471 L 997.665974 976 A 24 24 0 0 1 960.947911 996.353154 L 822.323644 909.731098 A 95 95 0 0 1 777.665974 829.166529 Z"
+  },
+  "colours": {
+    "lime": "#E3F941",
+    "black": "#141414",
+    "white": "#FFFFFF"
+  },
+  "layouts": {
+    "icon": {
+      "clearSpace": 250
+    },
+    "wordmark": {
+      "clearSpace": 500
+    },
+    "primary": {
+      "iconHeight": 1750,
+      "iconY": -480,
+      "prefixToIcon": 0,
+      "iconToL": 120,
+      "clearSpace": 500
+    },
+    "horizontal": {
+      "iconHeight": 2500,
+      "iconY": -750,
+      "gap": 400,
+      "clearSpace": 500
+    },
+    "stacked": {
+      "iconHeight": 3300,
+      "gap": 400,
+      "clearSpace": 500
+    },
+    "panelOnWhite": {
+      "whiteBorder": 250
+    },
+    "app": {
+      "tile": 1000,
+      "radius": 160,
+      "iconHeight": 700
+    },
+    "favicon": {
+      "tile": 1000,
+      "radius": 0,
+      "iconHeight": 760
+    }
+  }
+}

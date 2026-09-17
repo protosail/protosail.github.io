@@ -1,0 +1,107 @@
+[
+  {
+    "width": 1440,
+    "errors": [],
+    "headings": [
+      "Ports & coastal infrastructure",
+      "Environmental monitoring & restoration",
+      "Offshore energy",
+      "Maritime security"
+    ],
+    "images": [
+      {
+        "loaded": true,
+        "width": 1536,
+        "alt": true
+      },
+      {
+        "loaded": true,
+        "width": 1536,
+        "alt": true
+      },
+      {
+        "loaded": true,
+        "width": 1536,
+        "alt": true
+      },
+      {
+        "loaded": true,
+        "width": 1536,
+        "alt": true
+      }
+    ],
+    "overflow": false,
+    "sectionOverflow": false,
+    "credits": 0
+  },
+  {
+    "width": 768,
+    "errors": [],
+    "headings": [
+      "Ports & coastal infrastructure",
+      "Environmental monitoring & restoration",
+      "Offshore energy",
+      "Maritime security"
+    ],
+    "images": [
+      {
+        "loaded": true,
+        "width": 1536,
+        "alt": true
+      },
+      {
+        "loaded": true,
+        "width": 1536,
+        "alt": true
+      },
+      {
+        "loaded": true,
+        "width": 1536,
+        "alt": true
+      },
+      {
+        "loaded": true,
+        "width": 1536,
+        "alt": true
+      }
+    ],
+    "overflow": false,
+    "sectionOverflow": false,
+    "credits": 0
+  },
+  {
+    "width": 390,
+    "errors": [],
+    "headings": [
+      "Ports & coastal infrastructure",
+      "Environmental monitoring & restoration",
+      "Offshore energy",
+      "Maritime security"
+    ],
+    "images": [
+      {
+        "loaded": true,
+        "width": 1536,
+        "alt": true
+      },
+      {
+        "loaded": true,
+        "width": 1536,
+        "alt": true
+      },
+      {
+        "loaded": true,
+        "width": 1536,
+        "alt": true
+      },
+      {
+        "loaded": true,
+        "width": 1536,
+        "alt": true
+      }
+    ],
+    "overflow": false,
+    "sectionOverflow": false,
+    "credits": 0
+  }
+]

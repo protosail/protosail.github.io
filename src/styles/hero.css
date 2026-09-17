@@ -165,20 +165,43 @@
   .hero__lead { font-size: clamp(1rem, 1.35vw, 1.125rem); line-height: 1.45; }
 }
 @media (max-width: 859px) {
-  .hero { min-height: max(60rem, 100svh); }
-  .hero__inner { justify-content: flex-start; padding-block: calc(var(--nav-h) + 5rem) 22rem; }
+  .hero { min-height: 100svh; }
+  .hero__inner { justify-content: flex-start; padding-block: calc(var(--nav-h) + 2rem) 4rem; }
   .hero__title { font-size: clamp(3.05rem, 8vw, 5.5rem); letter-spacing: -.05em; }
   .hero__scrim { background: linear-gradient(0deg,var(--bg),transparent 23%), linear-gradient(180deg,rgba(5,8,13,.3),transparent 75%); }
 }
 @media (max-width: 559px) {
-  .hero__inner { padding-top: calc(var(--nav-h) + 3.75rem); }
+  .hero__inner { padding-block: calc(var(--nav-h) + clamp(.75rem, 3svh, 2rem)) 4rem; }
   .hero__top { margin-bottom: 1.5rem; }
-  .hero__title { font-size: clamp(2.8rem, 10.1vw, 3.6rem); }
+  .hero__title { font-size: clamp(2.35rem, 10.1vw, 3.6rem); }
   .hero__line:first-child { max-width: 10ch; }
   .hero__line--dim { max-width: 12ch; margin-top: .12em; }
   .hero__lead { max-width: 29ch; }
-  .hero__body { gap: 1.6rem; }
-  .hero__actions { gap: 1.25rem; }
+  .hero__body { gap: 1.25rem; }
+  .hero__actions { gap: .75rem 1.25rem; }
+  .hero__motion { bottom: max(1rem, env(safe-area-inset-bottom)); }
+}
+
+@media (max-width: 359px) {
+  .hero__actions { gap: .75rem; }
+  .hero__actions .btn { padding-inline: 1.125rem; }
+}
+
+@media (max-width: 859px) and (max-height: 740px) {
+  .hero__top { margin-bottom: .75rem; }
+  .hero__body { gap: .75rem; }
+  .hero__title { font-size: clamp(2rem, min(9.5vw, 5.6svh), 3rem); }
+  .hero__lead { font-size: 1rem; line-height: 1.4; max-width: 34ch; }
+  .hero__actions { margin-top: 0; }
+}
+
+@media (max-width: 859px) and (max-height: 500px) {
+  .hero__inner { padding-block: calc(var(--nav-h) + .5rem) 3.5rem; }
+  .hero__title { font-size: clamp(1.75rem, 7.5svh, 2.25rem); }
+  .hero__title, .hero__lead { max-width: 52%; }
+  .hero__line:first-child, .hero__line--dim { max-width: none; }
+  .hero__lead { font-size: .9375rem; }
+  .hero__actions { gap: 1rem; }
 }
 
 @media (pointer: coarse) {

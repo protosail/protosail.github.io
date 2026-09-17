@@ -78,6 +78,7 @@ export function createOcean(container: HTMLElement, options: OceanOptions = {}):
   const camera = new PerspectiveCamera(42,1,.1,150)
   const cameraRestY = 3.1
   const cameraRestPitch = -7 * Math.PI / 180
+  const cameraMobilePitch = -11 * Math.PI / 180
   camera.position.set(0,cameraRestY,0)
   camera.rotation.x = cameraRestPitch
 
@@ -115,6 +116,7 @@ export function createOcean(container: HTMLElement, options: OceanOptions = {}):
   let time = 37, running = false, wanted = false, contextLost = false, raf = 0
   let disposed = false
   let motion = !options.reducedMotion
+  let mobileViewport = container.clientWidth < 860
   let scrollSpeed = 1
   const pointer = (uniforms.uPointer.value as Vector2).clone()
   const pointerTarget = pointer.clone()
@@ -142,7 +144,7 @@ export function createOcean(container: HTMLElement, options: OceanOptions = {}):
     // interface remains fixed. The restrained range keeps the horizon composed.
     camera.position.x = cameraDrift.x*.18
     camera.position.y = cameraRestY+cameraDrift.y*.072
-    camera.rotation.x = cameraRestPitch+cameraDrift.y*.011
+    camera.rotation.x = (mobileViewport ? cameraMobilePitch : cameraRestPitch)+cameraDrift.y*.011
     camera.rotation.y = -cameraDrift.x*.016
     uniforms.uTime.value = time
     ocean.onFrame?.(Math.min(dt,.1),time)
@@ -187,6 +189,7 @@ export function createOcean(container: HTMLElement, options: OceanOptions = {}):
   function stop() { wanted = false; pause() }
   function resize() {
     const w = container.clientWidth || 1, h = container.clientHeight || 1
+    mobileViewport = w < 860
     // The boat shares this framebuffer: render fine edges at device resolution
     // instead of enlarging the former 600k-pixel canvas across the entire hero.
     const pixelBudget = options.coarse ? 1800000 : 3600000

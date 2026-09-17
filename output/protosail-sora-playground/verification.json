@@ -1,0 +1,29 @@
+{
+  "checks": {
+    "cases": 22,
+    "initial": {
+      "height": 2516,
+      "centre": 500
+    },
+    "settings": {
+      "weight": 800,
+      "height": 85,
+      "w0": 100,
+      "w1": 100,
+      "w2": 100,
+      "w3": 100,
+      "v0": 100,
+      "v1": 100,
+      "v2": 100,
+      "v3": 100
+    },
+    "svgPathsOnly": true,
+    "weights": 71
+  },
+  "errors": [],
+  "mobileNoOverflow": true,
+  "keyboardControl": true,
+  "svgDownload": true,
+  "settingsDownload": true,
+  "mobileStickyPreview": true
+}
