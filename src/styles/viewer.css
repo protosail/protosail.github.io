@@ -1,0 +1,498 @@
+/* ---------------------------------------------------------------------------
+   The 3D stage's own chrome: canvas, callouts, dimension leaders, the trim
+   controls and the readout. Open typography and fine drawing rules keep the
+   annotations secondary to the model.
+   --------------------------------------------------------------------------- */
+
+.stage-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.is-context-lost::after {
+  content: 'The graphics context was lost. Reload the page.';
+  position: absolute;
+  inset: auto 0 50% 0;
+  text-align: center;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  color: var(--ink-2);
+}
+
+/* --- loader ----------------------------------------------------------------- */
+
+.stage__loader {
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-stage-ui);
+  display: grid;
+  place-items: center;
+  background: var(--bg);
+  transition:
+    opacity 620ms ease,
+    visibility 620ms;
+}
+
+.stage__loader.is-done {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loader-inner {
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+}
+
+.loader-track {
+  width: 168px;
+  height: 1px;
+  background: rgba(233, 237, 242, 0.12);
+  overflow: hidden;
+}
+
+.loader-bar {
+  width: 100%;
+  height: 100%;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 260ms ease;
+}
+
+.loader-note {
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  color: var(--ink-3);
+}
+
+.stage__loader.is-error .loader-bar {
+  background: #d9563f;
+  transform: scaleX(1);
+}
+
+.stage__loader.is-error .loader-note {
+  color: var(--ink-2);
+  text-transform: none;
+  letter-spacing: 0.01em;
+  max-width: 34ch;
+  text-align: center;
+}
+
+/* --- labels + dimensions ---------------------------------------------------- */
+
+.labels {
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-content);
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 260ms ease;
+}
+
+.labels.is-hidden {
+  opacity: 0;
+}
+
+.labels-svg,
+.labels-boxes {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.label-leader,
+.dimension-line {
+  fill: none;
+  stroke: rgba(233, 237, 242, 0.35);
+  stroke-width: 1;
+  paint-order: stroke;
+  shape-rendering: geometricPrecision;
+}
+
+.label-leader {
+  stroke-linejoin: round;
+}
+
+.label-leader.is-off,
+.dimension-line.is-off {
+  display: none;
+}
+
+.label,
+.dimension {
+  position: absolute;
+  top: 0;
+  left: 0;
+  will-change: transform;
+}
+
+.label.is-off,
+.dimension.is-off {
+  display: none;
+}
+
+/* The SVG leader continues beneath the name as one uninterrupted baseline. */
+.label-inner {
+  display: block;
+  padding: 0 0 8px;
+  min-width: 4rem;
+  white-space: nowrap;
+  text-shadow: 0 1px 2px var(--bg);
+}
+
+.label--right .label-inner {
+  transform: translate(0, -100%);
+}
+
+.label--left .label-inner {
+  transform: translate(-100%, -100%);
+}
+
+.label-text {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: .9375rem;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: 0;
+  color: var(--ink);
+}
+
+.label-sub {
+  display: block;
+  margin-top: var(--s-1);
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  line-height: 1.3;
+  letter-spacing: 0.01em;
+  color: var(--ink-2);
+}
+
+.dimension-line.is-reference {
+  stroke: rgba(233, 237, 242, 0.24);
+  stroke-dasharray: 5 5;
+}
+
+.dimension--reference .dimension-inner {
+  color: var(--ink-2);
+}
+
+.dimension-inner {
+  display: inline-block;
+  transform: translate(-50%, -50%);
+  padding: 0;
+  font-family: var(--font-sans);
+  font-size: var(--text-small);
+  line-height: 1.4;
+  letter-spacing: 0;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 1px 2px var(--bg);
+  white-space: nowrap;
+}
+
+/* --- trim card: controls + readout ------------------------------------------ */
+
+.trim {
+  display: grid;
+  gap: 12px;
+  width: min(100%, 300px);
+  padding: 12px 14px 14px;
+  background: var(--panel);
+  backdrop-filter: blur(16px) saturate(1.1);
+  -webkit-backdrop-filter: blur(16px) saturate(1.1);
+  border: 1px solid var(--line);
+  border-radius: var(--r-2);
+  box-shadow: 0 6px 26px rgba(3, 5, 9, 0.4);
+}
+
+.controls-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.hud-title,
+.controls-title {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  color: var(--ink-3);
+}
+
+.auto {
+  padding: 8px 14px;
+  min-height: 40px;
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--ink-3);
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: var(--r-1);
+  transition:
+    color 160ms ease,
+    border-color 160ms ease,
+    background-color 160ms ease;
+}
+
+.auto[aria-pressed='true'] {
+  color: var(--accent);
+  border-color: rgba(227, 249, 65, 0.45);
+  background: var(--accent-soft);
+}
+
+.auto:hover {
+  color: var(--ink);
+}
+
+.controls-body {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 10px;
+}
+
+/* the wind dial */
+
+.dial {
+  position: relative;
+  flex: 0 0 auto;
+  width: 86px;
+  height: 86px;
+  cursor: grab;
+  touch-action: none;
+  border-radius: 50%;
+}
+
+.dial:active {
+  cursor: grabbing;
+}
+
+.dial svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.dial-ring {
+  fill: rgba(233, 237, 242, 0.03);
+  stroke: var(--line);
+  stroke-width: 1;
+}
+
+.dial-ticks line {
+  stroke: var(--line);
+  stroke-width: 1.4;
+}
+
+.dial-boat {
+  fill: rgba(233, 237, 242, 0.14);
+  stroke: rgba(233, 237, 242, 0.3);
+  stroke-width: 1;
+}
+
+.dial-arrow {
+  fill: var(--accent);
+}
+
+.dial-stem {
+  stroke: var(--accent);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  opacity: 0.6;
+}
+
+.dial-value {
+  position: absolute;
+  inset: auto 0 -3px 0;
+  text-align: center;
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  letter-spacing: 0.01em;
+  color: var(--ink-3);
+  pointer-events: none;
+}
+
+.dial.is-focus .dial-ring {
+  stroke: rgba(227, 249, 65, 0.4);
+}
+
+/* the two servo sliders */
+
+.sliders {
+  flex: 1 1 auto;
+  display: grid;
+  gap: 11px;
+  min-width: 0;
+}
+
+.slider {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  gap: 2px 8px;
+}
+
+.slider-label {
+  grid-column: 1;
+  grid-row: 1;
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  color: var(--ink-3);
+  transition: color 160ms ease;
+}
+
+.slider.is-focus .slider-label {
+  color: var(--accent);
+}
+
+.slider-value {
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: end;
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-2);
+  white-space: pre;
+}
+
+.slider input[type='range'] {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 28px;
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.slider input[type='range']::-webkit-slider-runnable-track {
+  height: 2px;
+  border-radius: 0;
+  background: rgba(233, 237, 242, 0.16);
+}
+
+.slider input[type='range']::-moz-range-track {
+  height: 2px;
+  border-radius: 0;
+  background: rgba(233, 237, 242, 0.16);
+}
+
+.slider input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 11px;
+  height: 11px;
+  margin-top: -4.5px;
+  border: none;
+  border-radius: 50%;
+  background: var(--ink);
+  box-shadow: 0 0 0 3px rgba(5, 8, 13, 0.8);
+  transition: background-color 160ms ease;
+}
+
+.slider input[type='range']::-moz-range-thumb {
+  width: 11px;
+  height: 11px;
+  border: none;
+  border-radius: 50%;
+  background: var(--ink);
+  box-shadow: 0 0 0 3px rgba(5, 8, 13, 0.8);
+}
+
+.slider.is-focus input[type='range']::-webkit-slider-thumb {
+  background: var(--accent);
+}
+
+.slider.is-focus input[type='range']::-moz-range-thumb {
+  background: var(--accent);
+}
+
+.slider input[type='range']:focus-visible::-webkit-slider-thumb {
+  box-shadow:
+    0 0 0 3px rgba(5, 8, 13, 0.8),
+    0 0 0 5px var(--accent);
+}
+
+/* --- readout: one mono row under the controls -------------------------------- */
+
+.hud {
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+}
+
+.hud-title {
+  display: none;
+}
+
+.hud-rows {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  margin: 0;
+}
+
+.hud-row {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.hud-row dt {
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  color: var(--ink-3);
+  cursor: help;
+}
+
+.hud-row dd {
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+  white-space: pre;
+}
+
+@media (max-width: 559px) {
+  .label-inner {
+    min-width: 3rem;
+    padding-bottom: 6px;
+  }
+
+  .label-text {
+    font-size: var(--text-small);
+  }
+
+  .dial {
+    width: 66px;
+    height: 66px;
+  }
+
+  .dial-value {
+    display: none;
+  }
+
+  .label-sub {
+    display: none;
+  }
+}

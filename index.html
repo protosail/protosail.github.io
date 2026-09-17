@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#05080d" />
+    <title>Protosail - UCL Microtransat Challenge team</title>
+    <meta
+      name="description"
+      content="Protosail is University College London's entry to the Microtransat Challenge: a fully autonomous sailing boat under 2.4 m, built by students to cross the Atlantic with nobody aboard."
+    />
+    <meta property="og:title" content="Protosail - UCL Microtransat Challenge team" />
+    <meta
+      property="og:description"
+      content="A fully autonomous sailing boat under 2.4 m, built by UCL students to cross the Atlantic with nobody aboard."
+    />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href="%BASE_URL%favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="%BASE_URL%favicon.ico" sizes="any" />
+    <link rel="apple-touch-icon" href="%BASE_URL%apple-touch-icon.png" />
+    <link rel="manifest" href="%BASE_URL%site.webmanifest" />
+    <link rel="preload" href="%BASE_URL%fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <script type="module" src="/src/main.ts"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="nav" data-nav>
+      <a class="nav__brand" href="#top" aria-label="Protosail × UCL, back to top">
+        <img class="brand-logo" src="%BASE_URL%brand/protosail.svg" alt="Protosail" width="9352" height="2750" />
+        <svg class="brand-cross" viewBox="0 0 16 16" aria-hidden="true"><path d="m4 4 8 8M12 4l-8 8" fill="none" stroke="currentColor" stroke-width="1.25" /></svg>
+        <img class="brand-ucl" src="%BASE_URL%brand/ucl.svg" alt="UCL" width="216" height="63" />
+      </a>
+      <nav class="nav__links" aria-label="Sections" data-nav-links>
+        <a href="#challenge">Challenge</a>
+        <a href="#boat">Boat</a>
+        <a href="#applications">Applications</a>
+        <a href="#team">Team</a>
+        <a href="#news">News</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="nav__end">
+        <a class="nav__cta" href="#contact">Get in touch
+          <svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+        </a>
+        <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="menu" data-nav-toggle>
+          <span data-nav-toggle-label>Menu</span>
+          <span class="nav__toggle-icon" aria-hidden="true">
+            <span class="nav__toggle-bar"></span>
+            <span class="nav__toggle-bar"></span>
+          </span>
+        </button>
+      </div>
+      <div class="nav__menu" id="menu" data-nav-menu data-lenis-prevent hidden inert>
+        <nav aria-label="Mobile sections" data-nav-mobile-links>
+          <a href="#challenge">The challenge</a>
+          <a href="#boat">Our boat</a>
+          <a href="#applications">Applications</a>
+          <a href="#team">Team</a>
+          <a href="#news">News</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <a class="nav__cta" href="#contact">Get in touch
+          <svg class="icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+        </a>
+      </div>
+    </header>
+
+    <main id="main">
+      <div class="hero__backdrop" data-hero-backdrop aria-hidden="true">
+        <div class="hero__canvas" data-ocean></div>
+        <div class="hero__scrim"></div>
+      </div>
+      <!-- ================================================================ hero -->
+      <section class="hero" id="top" aria-labelledby="hero-title">
+        <div class="hero__inner container">
+          <div class="hero__top">
+            <p class="eyebrow" data-reveal data-placeholder>
+              UCL · Microtransat Challenge · 2026 entry
+            </p>
+          </div>
+          <div class="hero__body">
+            <h1 class="display hero__title" id="hero-title">
+              <span class="hero__line"><span class="hero__line-inner" data-hero-line>Across the Atlantic.</span></span>
+              <span class="hero__line hero__line--dim"><span class="hero__line-inner" data-hero-line>Nobody aboard.</span></span>
+            </h1>
+            <p class="lead hero__lead" data-reveal>
+              Built by UCL students. Powered by wind and sun.
+              An autonomous sailing boat taking on the Atlantic.
+            </p>
+            <div class="hero__actions" data-reveal>
+              <a class="btn btn--primary btn--lg" href="#boat">
+                See the boat
+                <svg class="icon" viewBox="0 0 16 16" aria-hidden="true" style="transform: rotate(90deg)">
+                  <path d="M3 8h9M8 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </a>
+              <a class="link" href="#challenge">
+                The challenge
+                <svg class="icon" viewBox="0 0 16 16" aria-hidden="true">
+                  <path d="M3 8h9M8 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+        <button class="hero__motion" type="button" data-wave-toggle aria-pressed="false" title="Play animation" hidden>
+          <svg class="hero__motion-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="butt" stroke-linejoin="miter" aria-hidden="true" focusable="false">
+            <path class="hero__motion-play" d="M6 3.5L13 8l-7 4.5Z" fill="currentColor" stroke="none" />
+            <path class="hero__motion-pause" d="M5.5 3v10M10.5 3v10" />
+          </svg>
+          <span class="hero__motion-label">Play animation</span>
+        </button>
+      </section>
+
+      <!-- ======================================================== 01 challenge -->
+      <section class="section challenge" id="challenge" aria-labelledby="challenge-title">
+        <div class="container">
+          <div class="challenge__stage" data-challenge>
+            <div class="challenge__copy" data-reveal-group>
+              <h2 class="h2" id="challenge-title">The Atlantic. No hands on the helm.</h2>
+              <p class="lead">
+                A 2.4 m sailing boat must navigate between Europe and the Americas with no crew and no remote control.
+              </p>
+              <a class="link" href="https://www.microtransat.org/" target="_blank" rel="noopener">
+                Read the challenge rules
+                <svg class="icon" viewBox="0 0 16 16" aria-hidden="true" style="transform: rotate(-45deg)">
+                  <path d="M3 8h9M8 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </a>
+            </div>
+
+            <figure
+              class="challenge__globe"
+              data-globe
+              role="img"
+              aria-label="An animated technical globe centred on the North Atlantic. The route runs from the yellow start line west of Europe to the yellow finish line east of the Americas."
+            >
+              <div class="challenge__globe-halo" aria-hidden="true"></div>
+              <canvas class="challenge__globe-canvas" data-globe-canvas aria-hidden="true"></canvas>
+              <div class="challenge__globe-label challenge__globe-label--start" data-globe-start-label aria-hidden="true">
+                <span>Start line</span>
+              </div>
+              <div class="challenge__globe-label challenge__globe-label--finish" data-globe-finish-label aria-hidden="true">
+                <span>Finish line</span>
+              </div>
+            </figure>
+
+            <div class="challenge__score" data-challenge-score role="group" aria-label="Microtransat record so far">
+              <p class="challenge__metric">
+                <span class="visually-hidden">38 attempts</span>
+                <span class="challenge__number" data-attempt-count aria-hidden="true">38</span>
+                <span class="challenge__metric-label" aria-hidden="true">attempts</span>
+              </p>
+              <p class="challenge__metric challenge__metric--open">
+                <span class="visually-hidden">0 successful autonomous runs so far</span>
+                <span class="challenge__number" data-success-count aria-hidden="true">0</span>
+                <span class="challenge__metric-label" aria-hidden="true">successful autonomous<br />runs so far</span>
+              </p>
+            </div>
+          </div>
+
+          <div class="challenge-timeline" aria-labelledby="challenge-timeline-title" data-reveal>
+            <div class="challenge-timeline__head">
+              <h3 class="h3" id="challenge-timeline-title">2026/27 academic year</h3>
+              <p>Our plan for an autonomous Atlantic crossing.</p>
+            </div>
+
+            <ol class="challenge-timeline__list" role="list">
+              <li class="challenge-timeline__item">
+                <p class="challenge-timeline__date"><time datetime="2026-09">Sep</time> - <time datetime="2026-12">Dec</time> <span>2026</span></p>
+                <div class="challenge-timeline__body">
+                  <h4 class="challenge-timeline__task">Design &amp; simulation</h4>
+                  <p class="challenge-timeline__detail">Scale-model testing</p>
+                </div>
+              </li>
+              <li class="challenge-timeline__item">
+                <p class="challenge-timeline__date"><time datetime="2027-01">Jan</time> - <time datetime="2027-02">Feb</time> <span>2027</span></p>
+                <div class="challenge-timeline__body">
+                  <h4 class="challenge-timeline__task">Manufacturing</h4>
+                </div>
+              </li>
+              <li class="challenge-timeline__item">
+                <p class="challenge-timeline__date"><time datetime="2027-03">Mar</time> - early <time datetime="2027-07">Jul</time> <span>2027</span></p>
+                <div class="challenge-timeline__body">
+                  <h4 class="challenge-timeline__task">Testing &amp; sea trials</h4>
+                  <p class="challenge-timeline__detail">Component stress tests, UCL towing tank, lake and sea testing</p>
+                </div>
+              </li>
+              <li class="challenge-timeline__item">
+                <p class="challenge-timeline__date"><time datetime="2027-07">Jul</time> <span>2027</span></p>
+                <div class="challenge-timeline__body">
+                  <h4 class="challenge-timeline__task">Mission preparation</h4>
+                  <p class="challenge-timeline__detail">Ready for the transatlantic crossing</p>
+                </div>
+              </li>
+              <li class="challenge-timeline__item challenge-timeline__item--milestone">
+                <p class="challenge-timeline__date">End of <time datetime="2027-07">Jul</time> <span>2027</span></p>
+                <div class="challenge-timeline__body">
+                  <h4 class="challenge-timeline__task">Mission starts</h4>
+                  <p class="challenge-timeline__detail">Newfoundland, Canada</p>
+                </div>
+              </li>
+              <li class="challenge-timeline__item challenge-timeline__item--milestone">
+                <p class="challenge-timeline__date">Mid <time datetime="2027-08">Aug</time> <span>2027</span></p>
+                <div class="challenge-timeline__body">
+                  <h4 class="challenge-timeline__task">Mission complete</h4>
+                  <p class="challenge-timeline__detail">UK coast</p>
+                </div>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================= 02 boat -->
+      <section class="section boat" id="boat" aria-labelledby="boat-title">
+        <div class="container">
+          <h2 class="h2 boat__caption" id="boat-title" data-split>Meet our Atlantic challenger.</h2>
+        </div>
+
+        <div class="scrolly" data-scrolly>
+          <div class="scrolly__stage" data-stage>
+            <div
+              class="stage__canvas"
+              data-viewer
+              role="img"
+              aria-label="Interactive 3D model of the boat. Use the chapter links to change views."
+            ></div>
+            <div class="stage__scrim" aria-hidden="true"></div>
+            <div class="stage__loader" data-loader>
+              <div class="loader-inner">
+                <div class="loader-track"><div class="loader-bar"></div></div>
+                <div class="loader-note">Loading model</div>
+              </div>
+            </div>
+            <nav class="rail" aria-label="Boat chapters" data-rail></nav>
+          </div>
+          <div class="scrolly__steps" data-steps></div>
+        </div>
+
+        <div class="container">
+          <div class="past" id="lineage">
+            <div class="past__head" data-reveal>
+              <p class="eyebrow">Previous boats</p>
+              <p class="small past__lead">
+                A record of the prototypes that shaped the current boat.
+              </p>
+            </div>
+            <ul class="past__grid" data-past data-reveal-group></ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================== 03 applications -->
+      <section class="section applications" id="applications" aria-labelledby="applications-title">
+        <div class="container">
+          <div class="applications__head">
+            <h2 class="h2" id="applications-title">Ocean autonomy, applied.</h2>
+            <div class="applications__intro">
+              <p class="applications__lead">Beyond the Atlantic crossing, the technology we develop could support a wide range of maritime missions, with sensors and payloads tailored to each task.</p>
+            </div>
+          </div>
+          <div class="applications__list">
+            <article class="application" aria-labelledby="application-ports">
+              <div class="application__body">
+                <h3 id="application-ports">Ports &amp; coastal infrastructure</h3>
+                <p>Repeat coastal surveys, water-quality measurements and vessel tracking along open approaches to ports.</p>
+              </div>
+              <figure class="application__figure">
+                <div class="application__image">
+                  <img src="%BASE_URL%images/applications/ports-depth.jpg" alt="Depth-map interpretation of a container port, with two waterfront cranes highlighted in yellow." width="1536" height="1024" loading="lazy" decoding="async" />
+                </div>
+              </figure>
+            </article>
+            <article class="application" aria-labelledby="application-environment">
+              <div class="application__body">
+                <h3 id="application-environment">Environmental monitoring &amp; restoration</h3>
+                <p>Track water quality and marine life over time, helping researchers understand ecosystem health and assess restoration efforts.</p>
+              </div>
+              <figure class="application__figure">
+                <div class="application__image">
+                  <img src="%BASE_URL%images/applications/environment-restoration-depth.png" alt="Depth-map interpretation of an autonomous monitoring sailboat highlighted in yellow, surveying restored seagrass and tidal channels." width="1536" height="1024" loading="lazy" decoding="async" />
+                </div>
+              </figure>
+            </article>
+            <article class="application" aria-labelledby="application-offshore">
+              <div class="application__body">
+                <h3 id="application-offshore">Offshore energy</h3>
+                <p>Collect wind, wave and current data to support offshore site planning, environmental assessments and vessel monitoring.</p>
+              </div>
+              <figure class="application__figure">
+                <div class="application__image">
+                  <img src="%BASE_URL%images/applications/offshore-depth.jpg" alt="Depth-map interpretation of an offshore wind farm, with the nearest turbine highlighted in yellow." width="1536" height="1024" loading="lazy" decoding="async" />
+                </div>
+              </figure>
+            </article>
+            <article class="application" aria-labelledby="application-security">
+              <div class="application__body">
+                <h3 id="application-security">Maritime security</h3>
+                <p>Extend awareness across remote waters through vessel tracking, passive acoustic sensing and observations relayed to shore.</p>
+              </div>
+              <figure class="application__figure">
+                <div class="application__image">
+                  <img src="%BASE_URL%images/applications/security-depth.jpg" alt="Overhead depth-map interpretation of a cargo vessel highlighted in yellow against a charcoal sea." width="1536" height="1024" loading="lazy" decoding="async" />
+                </div>
+              </figure>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================= 04 team -->
+      <section class="section team" id="team" aria-labelledby="team-title">
+        <div class="container">
+          <div class="section__head">
+            <h2 class="h2" id="team-title" data-split>Ten disciplines, one boat.</h2>
+            <p class="lead" data-reveal>Meet the people engineering every part of the crossing.</p>
+          </div>
+          <div class="team__groups">
+            <div class="team__group">
+              <h3 class="eyebrow" data-reveal>
+                Current members
+              </h3>
+              <ul class="people" data-team="members" data-reveal-group></ul>
+            </div>
+            <div class="team__group">
+              <h3 class="eyebrow" data-reveal>
+                Supervisors
+              </h3>
+              <ul class="people" data-team="supervisors" data-reveal-group></ul>
+            </div>
+            <div class="team__group">
+              <h3 class="eyebrow" data-reveal>
+                Alumni
+              </h3>
+              <ul class="people" data-team="alumni" data-reveal-group></ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================= 05 news -->
+      <section class="section news" id="news" aria-labelledby="news-title">
+        <div class="container">
+          <div class="section__head news__head">
+            <h2 class="h2" id="news-title" data-split>News from the workshop.</h2>
+            <a class="btn news__all-link" href="%BASE_URL%news/">
+              View all news
+              <svg class="icon" viewBox="0 0 16 16" aria-hidden="true">
+                <path d="M3 8h9M8 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+          </div>
+          <div class="updates" data-news data-reveal-group></div>
+        </div>
+      </section>
+
+      <!-- ========================================================== 06 contact -->
+      <section class="section contact" id="contact" aria-labelledby="contact-title">
+        <div class="container">
+          <div class="contact__grid">
+            <div class="section__head contact__head">
+              <p class="eyebrow" data-reveal>Contact</p>
+              <h2 class="h2" id="contact-title" data-split>Get in touch.</h2>
+              <p class="lead" data-reveal>For sponsorship or press enquiries, write to us.</p>
+              <a class="btn btn--primary btn--lg" href="mailto:team@protosail.example" data-reveal data-placeholder>
+                Email the team
+                <svg class="icon" viewBox="0 0 16 16" aria-hidden="true">
+                  <path d="M3 8h9M8 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </a>
+            </div>
+            <dl class="contact__list" data-reveal-group>
+              <div data-placeholder>
+                <dt>Email</dt>
+                <dd><a class="link-plain" href="mailto:team@protosail.example">team@protosail.example</a></dd>
+              </div>
+              <div>
+                <dt>Location</dt>
+                <dd>UCL, Gower Street, London</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__grid">
+        <div class="footer__brand">
+          <img class="brand-logo" src="%BASE_URL%brand/protosail.svg" alt="Protosail" width="9352" height="2750" />
+          <p class="mono">UCL Microtransat Challenge team</p>
+        </div>
+        <nav class="footer__links" aria-label="Footer">
+          <a href="#challenge">Challenge</a>
+          <a href="#boat">Boat</a>
+          <a href="#applications">Applications</a>
+          <a href="#team">Team</a>
+          <a href="#news">News</a>
+          <a href="#contact">Contact</a>
+          <a href="https://www.microtransat.org/" target="_blank" rel="noopener">Microtransat</a>
+        </nav>
+        <p class="footer__legal mono" data-placeholder>
+          © 2026 Protosail. The model shown is a placeholder demonstrator built by another team and will be
+          replaced.
+        </p>
+      </div>
+    </footer>
+    <noscript>
+      <p class="noscript">
+        The 3D model and the animations need JavaScript. Everything else on this page reads without it.
+      </p>
+    </noscript>
+  </body>
+</html>

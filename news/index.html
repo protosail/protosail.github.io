@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#05080d" />
+    <title>News - Protosail</title>
+    <meta name="description" content="All news and workshop updates from the Protosail UCL Microtransat team." />
+    <link rel="icon" href="%BASE_URL%favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="%BASE_URL%favicon.ico" sizes="any" />
+    <link rel="apple-touch-icon" href="%BASE_URL%apple-touch-icon.png" />
+    <link rel="manifest" href="%BASE_URL%site.webmanifest" />
+    <link rel="preload" href="%BASE_URL%fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <script type="module" src="/src/news.ts"></script>
+  </head>
+  <body class="news-page">
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="news-page__nav">
+      <div class="container news-page__nav-inner">
+        <a class="news-page__brand" href="%BASE_URL%" aria-label="Protosail × UCL home"><img class="brand-logo" src="%BASE_URL%brand/protosail.svg" alt="Protosail" width="9352" height="2750" />
+        <svg class="brand-cross" viewBox="0 0 16 16" aria-hidden="true"><path d="m4 4 8 8M12 4l-8 8" fill="none" stroke="currentColor" stroke-width="1.25" /></svg>
+        <img class="brand-ucl" src="%BASE_URL%brand/ucl.svg" alt="UCL" width="216" height="63" /></a>
+        <a class="link" href="%BASE_URL%">
+          Back to home
+          <svg class="icon" viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M3 8h9M8 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
+      </div>
+    </header>
+
+    <main class="news-page__main" id="main">
+      <div class="container">
+        <header class="news-page__head">
+          <h1 class="h2">All news.</h1>
+          <p class="lead">Updates from the workshop, testing programme, and the team behind the crossing.</p>
+        </header>
+        <ol class="news-page__grid" data-news-index></ol>
+      </div>
+    </main>
+
+    <footer class="news-page__footer">
+      <div class="container small">© 2026 Protosail. UCL Microtransat Challenge team.</div>
+    </footer>
+  </body>
+</html>

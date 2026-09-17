@@ -1,0 +1,27 @@
+html[data-motion='reduce'] *,
+html[data-motion='reduce'] *::before,
+html[data-motion='reduce'] *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .nav__menu,
+  .card--glass,
+  .trim {
+    background: var(--panel-solid);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
+
+@media (prefers-contrast: more) {
+  :root {
+    --line: rgba(233, 237, 242, 0.4);
+    --line-2: rgba(233, 237, 242, 0.24);
+    --line-strong: rgba(233, 237, 242, 0.6);
+    --ink-3: #8a97a6;
+  }
+}

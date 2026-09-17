@@ -1,0 +1,75 @@
+/* ---------------------------------------------------------------------------
+   Protosail design tokens. One dark theme; one accent.
+   --------------------------------------------------------------------------- */
+:root {
+  /* colour */
+  --bg: #05080d;
+  --bg-2: #0a1017;
+  --bg-3: #0f1720;
+  --ink: #f0efeb;
+  --ink-2: #a9b3bc;
+  --ink-3: #85939e; /* decorative only: rules, indices, hints */
+  --line: rgba(233, 237, 242, 0.12);
+  --line-2: rgba(233, 237, 242, 0.06);
+  --line-strong: rgba(233, 237, 242, 0.26);
+  --accent: #e3f941;
+  --accent-soft: rgba(227, 249, 65, 0.16);
+  --on-accent: #0b0f14;
+  --panel: rgba(9, 14, 21, 0.6);
+  --panel-solid: #090e15;
+
+  /* type */
+  --font-sans: 'Archivo', 'Archivo Fallback', system-ui, sans-serif;
+  --font-mono: var(--font-sans);
+  --text-display: clamp(2.75rem, 1.2rem + 6.4vw, 7rem);
+  --text-h2: clamp(2rem, 1rem + 3.2vw, 4rem);
+  --text-h3: clamp(1.375rem, 1.05rem + 1.1vw, 1.875rem);
+  --text-lead: clamp(1.125rem, 1rem + 0.5vw, 1.375rem);
+  --text-body: clamp(1rem, 0.95rem + 0.2vw, 1.0625rem);
+  --text-small: 0.875rem;
+  --text-mono: 0.875rem;
+  --text-data: 0.9375rem;
+  --text-stat: clamp(2.5rem, 1.5rem + 3vw, 4.5rem);
+
+  /* space (4-base) */
+  --s-1: 0.25rem;
+  --s-2: 0.5rem;
+  --s-3: 0.75rem;
+  --s-4: 1rem;
+  --s-5: 1.5rem;
+  --s-6: 2rem;
+  --s-7: 3rem;
+  --s-8: 4rem;
+  --s-9: 6rem;
+  --s-10: 8rem;
+  --s-11: 10rem;
+  --section-y: clamp(5rem, 4rem + 6vw, 10rem);
+  --gutter: clamp(1.25rem, 4vw, 4rem);
+  --container: 1440px;
+  --grid-gap: clamp(1rem, 2vw, 2rem);
+  --nav-h: 80px;
+  --nav-h-scrolled: 64px;
+
+  /* shape: engineered, near-square UI; circles are reserved for real dials/geometry */
+  --r-1: 0;
+  --r-2: 2px;
+  --r-3: 4px;
+  --r-pill: 2px;
+
+  /* motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-inout: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-1: 160ms;
+  --dur-2: 320ms;
+  --dur-3: 600ms;
+
+  /* layers */
+  --z-canvas: 0;
+  --z-content: 1;
+  --z-stage-ui: 2;
+  --z-grain: 40;
+  --z-nav: 50;
+  --z-menu: 60;
+
+  color-scheme: dark;
+}

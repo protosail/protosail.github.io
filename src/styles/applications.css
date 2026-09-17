@@ -1,0 +1,93 @@
+/* Compact photo-led applications within Protosail's existing visual system. */
+.applications__head {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: end;
+  gap: var(--s-8);
+  margin-bottom: var(--s-7);
+}
+.applications__head .h2 {
+  max-width: 18ch;
+  font-size: clamp(2rem, 1.4rem + 2vw, 3.5rem);
+}
+.applications__intro {
+  max-width: 52ch;
+  justify-self: end;
+  color: var(--ink-2);
+}
+.applications__list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--s-5);
+}
+.application {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.application__figure {
+  order: -1;
+  margin-bottom: var(--s-5);
+}
+.application__image {
+  position: relative;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  background: var(--bg-2);
+}
+.application__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* Map orange RGB differences to vivid brand yellow; neutral
+   depth shading is unchanged. Apply equally to static and WebGL renditions. */
+.application__image img,
+.application__image canvas { filter: url("/brand/accent-filter.svg#yellow"); }
+.application__image canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.application__image.has-depth-scene img { opacity: 0; }
+.application__body {
+  border-top: 1px solid var(--line-strong);
+  padding-top: var(--s-4);
+}
+.application__body h3 {
+  min-height: 3.45em;
+  margin-bottom: var(--s-3);
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+.application__body > p {
+  color: var(--ink-2);
+  font-size: var(--text-body);
+  line-height: 1.55;
+}
+@media (max-width: 1099px) {
+  .applications__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--s-7) var(--s-5);
+  }
+  .application__image { aspect-ratio: 2 / 1; }
+  .application__body h3 { min-height: 2.3em; }
+}
+@media (max-width: 599px) {
+  .applications__head {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--s-4);
+  }
+  .applications__intro { justify-self: start; }
+  .applications__list { grid-template-columns: minmax(0, 1fr); }
+  .application__figure { margin-bottom: var(--s-4); }
+  .application__body h3 {
+    min-height: 0;
+    text-wrap: pretty;
+  }
+}
