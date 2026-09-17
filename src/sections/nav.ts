@@ -7,6 +7,9 @@ import { ScrollTrigger, lenis, scrollY } from '../lib/scroll.js'
 
 const SCROLLED_ON = 32
 const SCROLLED_OFF = 8
+const MOBILE_NAV_QUERY = '(max-width: 859px)'
+const HIDE_AFTER_DOWNWARD_SCROLL = 32
+const SHOW_AFTER_UPWARD_SCROLL = 24
 
 export function initNav(): void {
   const nav = qs('[data-nav]')
@@ -18,6 +21,27 @@ export function initNav(): void {
   const background = qsa('body > :not(header):not(script)')
   const previousInert = new Map<HTMLElement, boolean>()
   let previousOverflow = ''
+  let open = false
+
+  // On phones the header makes room for the content while reading, then returns on
+  // a deliberate upward nudge. The menu itself always takes precedence.
+  const mobileNav = window.matchMedia(MOBILE_NAV_QUERY)
+  let mobileHidden = false
+  let lastScrollY = scrollY()
+  let downwardDistance = 0
+  let upwardDistance = 0
+  function setMobileHidden(next: boolean) {
+    if (next === mobileHidden) return
+    mobileHidden = next
+    nav.classList.toggle('is-mobile-hidden', next)
+    nav.inert = next
+  }
+  function resetMobileHide(y: number) {
+    lastScrollY = y
+    downwardDistance = 0
+    upwardDistance = 0
+    setMobileHidden(false)
+  }
 
   // --- scrolled state, with hysteresis so it never flickers around the threshold ----
   let scrolled = false
@@ -29,9 +53,31 @@ export function initNav(): void {
       scrolled = false
       nav.classList.remove('is-scrolled')
     }
+
+    if (!mobileNav.matches || open) {
+      resetMobileHide(y)
+      return
+    }
+    if (y <= SCROLLED_OFF) {
+      resetMobileHide(y)
+      return
+    }
+
+    const delta = y - lastScrollY
+    lastScrollY = y
+    if (delta > 0) {
+      downwardDistance += delta
+      upwardDistance = 0
+      if (downwardDistance >= HIDE_AFTER_DOWNWARD_SCROLL) setMobileHidden(true)
+    } else if (delta < 0) {
+      upwardDistance -= delta
+      downwardDistance = 0
+      if (upwardDistance >= SHOW_AFTER_UPWARD_SCROLL) setMobileHidden(false)
+    }
   }
   ScrollTrigger.create({ start: 0, end: 'max', onUpdate: () => onScroll(scrollY()) })
   onScroll(scrollY())
+  mobileNav.addEventListener('change', () => resetMobileHide(scrollY()))
 
   // --- active section ---------------------------------------------------------------
   function setActive(id: string | null) {
@@ -62,10 +108,10 @@ export function initNav(): void {
   })
 
   // --- mobile menu ------------------------------------------------------------------
-  let open = false
   function setOpen(next: boolean, restoreFocus = true) {
     if (next === open) return
     open = next
+    resetMobileHide(scrollY())
     toggle.setAttribute('aria-expanded', String(next))
     toggleLabel.textContent = next ? 'Close' : 'Menu'
     nav.classList.toggle('is-open', next)
