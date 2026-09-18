@@ -1,10 +1,12 @@
 {
   "name": "Protosail",
   "short_name": "Protosail",
+  "description": "UCL students building an autonomous sailing boat for the Microtransat Challenge.",
+  "lang": "en-GB",
   "start_url": "./",
   "display": "browser",
   "background_color": "#05080d",
-  "theme_color": "#141414",
+  "theme_color": "#05080d",
   "icons": [
     {
       "src": "brand/icon-192.png",
