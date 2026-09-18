@@ -78,7 +78,6 @@ export function createOcean(container: HTMLElement, options: OceanOptions = {}):
   const camera = new PerspectiveCamera(42,1,.1,150)
   const cameraRestY = 3.1
   const cameraRestPitch = -7 * Math.PI / 180
-  const cameraMobilePitch = -11 * Math.PI / 180
   camera.position.set(0,cameraRestY,0)
   camera.rotation.x = cameraRestPitch
 
@@ -116,7 +115,6 @@ export function createOcean(container: HTMLElement, options: OceanOptions = {}):
   let time = 37, running = false, wanted = false, contextLost = false, raf = 0
   let disposed = false
   let motion = !options.reducedMotion
-  let mobileViewport = container.clientWidth < 860
   let scrollSpeed = 1
   const pointer = (uniforms.uPointer.value as Vector2).clone()
   const pointerTarget = pointer.clone()
@@ -144,7 +142,7 @@ export function createOcean(container: HTMLElement, options: OceanOptions = {}):
     // interface remains fixed. The restrained range keeps the horizon composed.
     camera.position.x = cameraDrift.x*.18
     camera.position.y = cameraRestY+cameraDrift.y*.072
-    camera.rotation.x = (mobileViewport ? cameraMobilePitch : cameraRestPitch)+cameraDrift.y*.011
+    camera.rotation.x = cameraRestPitch+cameraDrift.y*.011
     camera.rotation.y = -cameraDrift.x*.016
     uniforms.uTime.value = time
     ocean.onFrame?.(Math.min(dt,.1),time)
@@ -189,7 +187,6 @@ export function createOcean(container: HTMLElement, options: OceanOptions = {}):
   function stop() { wanted = false; pause() }
   function resize() {
     const w = container.clientWidth || 1, h = container.clientHeight || 1
-    mobileViewport = w < 860
     // The boat shares this framebuffer: render fine edges at device resolution
     // instead of enlarging the former 600k-pixel canvas across the entire hero.
     const pixelBudget = options.coarse ? 1800000 : 3600000
@@ -218,7 +215,9 @@ export function createOcean(container: HTMLElement, options: OceanOptions = {}):
         const t = Math.max(0, Math.min(1, (progress-start)/(end-start)))
         return t*t*(3-2*t)
       }
-      uniforms.uBoatOpacity.value = 1-smooth(.03,.3)
+      // Hold the prototype through the opening scroll beat, then let it leave
+      // gradually rather than beginning its fade almost immediately.
+      uniforms.uBoatOpacity.value = 1-smooth(.12,.42)
       // Keep the hero's deliberate pace, then settle the continuing background to
       // a calmer 0.8× speed once the boat has faded from the first viewport.
       scrollSpeed = 1-smooth(.3,.9)*.2
