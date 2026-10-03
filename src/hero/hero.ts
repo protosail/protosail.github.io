@@ -35,7 +35,7 @@ export function initHero(): Ocean | null {
   })
   let pointerActive = false
   let pointerX = 0, pointerY = 0
-  const flareMotion = !reducedMotion && !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  const flareMotion = !reducedMotion
   const resetHeroPointer = () => {
     hero.style.setProperty('--hero-light-strength','0')
     backdrop.style.setProperty('--hero-camera-x','0px')

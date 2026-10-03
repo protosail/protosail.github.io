@@ -7,6 +7,7 @@
  *   ?nosmooth  native scrolling only
  *   ?nohero    skip the hero WebGL scene
  *   ?motion=reduce  opt into the reduced-motion presentation
+ *   Full motion is enabled by default on all devices, without a URL parameter.
  *   ?graphics=off  preview the graphics fallback
  *   ?qa=model-error  exercise model loading failure
  */

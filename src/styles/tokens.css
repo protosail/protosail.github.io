@@ -22,10 +22,10 @@
   --font-sans: 'Archivo', 'Archivo Fallback', system-ui, sans-serif;
   --font-mono: var(--font-sans);
   --text-display: clamp(2.75rem, 1.2rem + 6.4vw, 7rem);
-  --text-h2: clamp(2rem, 1rem + 3.2vw, 4rem);
-  --text-h3: clamp(1.375rem, 1.05rem + 1.1vw, 1.875rem);
+  --text-h2: clamp(2rem, 1.25rem + 2.5vw, 3.5rem);
+  --text-h3: clamp(1.375rem, 1.1rem + 0.8vw, 1.75rem);
   --text-lead: clamp(1.125rem, 1rem + 0.5vw, 1.375rem);
-  --text-body: clamp(1rem, 0.95rem + 0.2vw, 1.0625rem);
+  --text-body: clamp(1rem, 0.875rem + 0.4vw, 1.125rem);
   --text-small: 0.875rem;
   --text-mono: 0.875rem;
   --text-data: 0.9375rem;
@@ -43,7 +43,7 @@
   --s-9: 6rem;
   --s-10: 8rem;
   --s-11: 10rem;
-  --section-y: clamp(5rem, 4rem + 6vw, 10rem);
+  --section-y: clamp(4rem, 6vw, 5rem);
   --gutter: clamp(1.25rem, 4vw, 4rem);
   --container: 1440px;
   --grid-gap: clamp(1rem, 2vw, 2rem);

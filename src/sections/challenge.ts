@@ -9,7 +9,7 @@ import { feature } from 'topojson-client'
 import landTopology from 'world-atlas/land-110m.json'
 import { challenge, type LonLat } from '../content.js'
 import { qs } from '../lib/dom.js'
-import { ScrollTrigger, coarsePointer, gsap, instant, reducedMotion } from '../lib/scroll.js'
+import { coarsePointer, instant, reducedMotion } from '../lib/scroll.js'
 import { CURSOR_CAMERA } from '../lib/cursor.js'
 
 type Position = readonly [lon: number, lat: number]
@@ -401,67 +401,6 @@ function initGlobe(): void {
   resize()
 }
 
-function initScore(): void {
-  const score = qs<HTMLElement>('[data-challenge-score]')
-  const attemptCount = qs<HTMLElement>('[data-attempt-count]')
-  const successCount = qs<HTMLElement>('[data-success-count]')
-  if (instant || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
-
-  ScrollTrigger.create({
-    trigger: score,
-    start: 'top 82%',
-    once: true,
-    onEnter: () => {
-      const counter = { value: 0 }
-      attemptCount.textContent = '0'
-      const labels = score.querySelectorAll<HTMLElement>('.challenge__metric-label')
-      const attemptLabel = labels[0]
-      const successLabel = labels[1]
-      const timeline = gsap.timeline({ defaults: { ease: 'power3.out' } })
-      timeline.fromTo(
-        attemptCount,
-        { yPercent: 34, opacity: 0.18, filter: 'blur(10px)' },
-        { yPercent: 0, opacity: 1, filter: 'blur(0px)', duration: 0.8, clearProps: 'transform,filter' },
-      )
-      timeline.to(
-        counter,
-        {
-          value: 38,
-          duration: 1.15,
-          ease: 'power2.out',
-          onUpdate: () => {
-            attemptCount.textContent = String(Math.round(counter.value))
-          },
-        },
-        0,
-      )
-      if (attemptLabel) {
-        timeline.fromTo(
-          attemptLabel,
-          { clipPath: 'inset(0 100% 0 0)', opacity: 0.2 },
-          { clipPath: 'inset(0 0% 0 0)', opacity: 1, duration: 0.72, clearProps: 'clip-path' },
-          0.08,
-        )
-      }
-      timeline.fromTo(
-        successCount,
-        { yPercent: 34, opacity: 0.18, filter: 'blur(10px)' },
-        { yPercent: 0, opacity: 1, filter: 'blur(0px)', duration: 0.8, clearProps: 'transform,filter' },
-        1.15,
-      )
-      if (successLabel) {
-        timeline.fromTo(
-          successLabel,
-          { clipPath: 'inset(0 100% 0 0)', opacity: 0.2 },
-          { clipPath: 'inset(0 0% 0 0)', opacity: 1, duration: 0.72, clearProps: 'clip-path' },
-          1.24,
-        )
-      }
-    },
-  })
-}
-
 export function initChallenge(): void {
   initGlobe()
-  initScore()
 }

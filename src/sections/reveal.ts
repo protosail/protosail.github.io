@@ -1,7 +1,7 @@
 import { qsa } from '../lib/dom.js'
-import { gsap, instant } from '../lib/scroll.js'
+import { gsap, instant, SplitText } from '../lib/scroll.js'
 
-const entrance = { duration: .58, ease: 'power3.out', clearProps: 'all' } as const
+const arrive = { duration: .72, ease: 'power3.out', clearProps: 'opacity,transform' } as const
 
 function groupChildren(group: HTMLElement): HTMLElement[] {
   if (group.classList.contains('updates')) {
@@ -10,136 +10,193 @@ function groupChildren(group: HTMLElement): HTMLElement[] {
   return Array.from(group.children).filter((child): child is HTMLElement => child instanceof HTMLElement)
 }
 
-function cappedStagger(count: number, preferred = .065): number {
-  return count > 1 ? Math.min(preferred, .42 / (count - 1)) : 0
-}
-
-/**
- * A small, shared motion score for the editorial parts of the site. Content is visible
- * in the default CSS state, so a missing script never makes the page unreadable.
- */
+/** Visible by default. Only enhance after fonts settle, with one owner per entrance. */
 export function initReveals(): void {
-  if (instant || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+  if (instant) return
 
-  document.documentElement.classList.add('motion-ready')
+  void document.fonts.ready.then(() => {
+    const media = gsap.matchMedia()
+    media.add('(min-width: 0px)', () => {
+      document.documentElement.classList.add('motion-ready')
+      const pending = new Map<HTMLElement, { animation: gsap.core.Animation; group?: Element }>()
+      const entered = new WeakSet<HTMLElement>()
+      const splits: SplitText[] = []
+      const counts = new Map<HTMLElement, string>()
 
-  const heroLines = qsa<HTMLElement>('[data-hero-line]')
-  if (heroLines.length) {
-    gsap.from(heroLines, {
-      opacity: 0, y: 14, duration: .65, stagger: .07, ease: 'power3.out', clearProps: 'all',
-    })
-  }
-
-  // Plain copy arrives quickly. Larger structures below get motion that describes
-  // their own relationship rather than repeating this treatment everywhere.
-  for (const el of qsa<HTMLElement>('[data-reveal]:not(.challenge-timeline)')) {
-    gsap.from(el, {
-      opacity: 0, y: 8, duration: .42, ease: 'power2.out', clearProps: 'all',
-      scrollTrigger: { trigger: el, start: 'top 95%', once: true },
-    })
-  }
-
-  // Headings rise through a tight crop, echoing a sail clearing the horizon.
-  for (const heading of qsa<HTMLElement>('[data-split]')) {
-    gsap.from(heading, {
-      opacity: .35,
-      y: 18,
-      clipPath: 'inset(0 0 100% 0)',
-      ...entrance,
-      scrollTrigger: { trigger: heading, start: 'top 92%', once: true },
-    })
-  }
-
-  // Related items arrive as a bounded sequence. The cap keeps large team lists from
-  // turning into a long reveal queue.
-  for (const group of qsa<HTMLElement>('[data-reveal-group]')) {
-    const children = groupChildren(group)
-    if (!children.length) continue
-    const horizontal = group.classList.contains('past__grid')
-    gsap.from(children, {
-      opacity: 0,
-      x: horizontal ? 14 : 0,
-      y: horizontal ? 0 : 10,
-      duration: .52,
-      stagger: cappedStagger(children.length),
-      ease: 'power3.out',
-      clearProps: 'all',
-      scrollTrigger: { trigger: group, start: 'top 91%', once: true },
-    })
-  }
-
-  const timeline = document.querySelector<HTMLElement>('.challenge-timeline')
-  if (timeline) {
-    const items = qsa<HTMLElement>('.challenge-timeline__item', timeline)
-    const copy = qsa<HTMLElement>('.challenge-timeline__date, .challenge-timeline__body', timeline)
-    gsap.set(items, { '--timeline-draw': 0, '--timeline-node': 0 })
-    const sequence = gsap.timeline({
-      scrollTrigger: { trigger: timeline, start: 'top 82%', once: true },
-      defaults: { ease: 'power3.out' },
-    })
-    sequence.from(timeline.querySelector('.challenge-timeline__head'), {
-      opacity: 0, y: 8, duration: .42, clearProps: 'all',
-    })
-    sequence.to(items, {
-      '--timeline-draw': 1,
-      '--timeline-node': 1,
-      duration: .5,
-      stagger: cappedStagger(items.length, .08),
-    }, '-=.16')
-    sequence.from(copy, {
-      opacity: 0,
-      y: 8,
-      duration: .42,
-      stagger: cappedStagger(copy.length, .035),
-      clearProps: 'all',
-    }, '<+.08')
-  }
-
-  const applications = document.querySelector<HTMLElement>('.applications')
-  if (applications) {
-    const heading = applications.querySelector<HTMLElement>('.applications__head .h2')
-    const intro = applications.querySelector<HTMLElement>('.applications__intro')
-    const frames = qsa<HTMLElement>('.application__figure', applications)
-    const bodies = qsa<HTMLElement>('.application__body', applications)
-    const sequence = gsap.timeline({
-      scrollTrigger: { trigger: applications, start: 'top 76%', once: true },
-      defaults: { ease: 'power3.out' },
-    })
-    sequence.from([heading, intro].filter(Boolean), {
-      opacity: 0, y: 10, duration: .48, stagger: .08, clearProps: 'all',
-    })
-    sequence.from(frames, {
-      opacity: .25,
-      clipPath: 'inset(0 0 100% 0)',
-      duration: .62,
-      stagger: cappedStagger(frames.length, .07),
-      clearProps: 'all',
-    }, '-=.18')
-    sequence.from(bodies, {
-      opacity: 0, y: 8, duration: .42, stagger: cappedStagger(bodies.length, .06), clearProps: 'all',
-    }, '-=.36')
-  }
-
-  const newsPage = document.querySelector<HTMLElement>('.news-page')
-  if (newsPage) {
-    const heading = qsa<HTMLElement>('.news-page__head > *', newsPage)
-    const stories = qsa<HTMLElement>('.news-page__grid > li', newsPage)
-    gsap.from('.news-page__nav-inner', {
-      opacity: 0, y: -6, duration: .42, ease: 'power2.out', clearProps: 'all',
-    })
-    gsap.from(heading, {
-      opacity: 0, y: 10, duration: .5, stagger: .08, ease: 'power3.out', clearProps: 'all',
-    })
-    if (stories.length) {
-      gsap.from(stories, {
-        opacity: 0,
-        y: 10,
-        duration: .52,
-        stagger: cappedStagger(stories.length),
-        ease: 'power3.out',
-        clearProps: 'all',
-        scrollTrigger: { trigger: stories[0], start: 'top 92%', once: true },
+      // Observe each card, not its entire grid. This also respects the clipping of
+      // the horizontally scrolling prototype gallery on phones.
+      const onIntersection: IntersectionObserverCallback = entries => {
+        const stagger = new Map<Element, number>()
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue
+          const element = entry.target as HTMLElement
+          const motion = pending.get(element)
+          if (!motion) continue
+          const index = motion.group ? (stagger.get(motion.group) ?? 0) : 0
+          if (motion.group) stagger.set(motion.group, index + 1)
+          entered.add(element)
+          motion.animation.delay(Math.min(index * .085, .24)).play()
+          observer.unobserve(element)
+          edgeObserver.unobserve(element)
+        }
+      }
+      const observer = new IntersectionObserver(onIntersection, {
+        rootMargin: '0px 0px -80px 0px', threshold: 0,
       })
-    }
-  }
+      // Short footers can never cross an inset trigger at the end of the document.
+      const edgeObserver = new IntersectionObserver(onIntersection, { threshold: 0 })
+
+      const queue = (element: HTMLElement, animation: gsap.core.Animation, group?: Element) => {
+        pending.set(element, { animation, group })
+        // SplitText may reflow on resize. Already-read headings must stay visible.
+        if (entered.has(element) || element.getBoundingClientRect().bottom <= 0) {
+          entered.add(element)
+          animation.progress(1)
+        } else {
+          const visibility = element.closest('footer') ? edgeObserver : observer
+          visibility.observe(element)
+        }
+      }
+
+      const reveal = (element: HTMLElement, group?: Element) => {
+        queue(element, gsap.from(element, { opacity: 0, y: 24, ...arrive, paused: true }), group)
+      }
+
+      // Keyboard navigation never waits for an entrance, including nested links.
+      const onFocus = (event: FocusEvent) => {
+        if (!(event.target instanceof Node)) return
+        for (const [element, motion] of pending) {
+          if (!element.contains(event.target)) continue
+          entered.add(element)
+          motion.animation.delay(0).progress(1)
+          observer.unobserve(element)
+          edgeObserver.unobserve(element)
+        }
+      }
+      document.addEventListener('focusin', onFocus)
+
+      const hero = document.querySelector<HTMLElement>('.hero__inner')
+      if (hero) {
+        const sequence = gsap.timeline({ defaults: { ...arrive } })
+        sequence.from(qsa('[data-hero-line]', hero), {
+          opacity: 0, y: 30, clipPath: 'inset(0 0 100% 0)',
+          duration: .85, stagger: .13, clearProps: 'opacity,transform,clipPath',
+        })
+        sequence.from(qsa('[data-reveal]', hero), {
+          opacity: 0, y: 16, duration: .6, stagger: .09,
+        }, .18)
+        pending.set(hero, { animation: sequence })
+      }
+
+      // Line masks give titles a legible, deliberate entrance without scrambling
+      // characters. Auto-splitting follows font/viewport changes and preserves ARIA.
+      for (const heading of qsa<HTMLElement>('[data-split]')) {
+        splits.push(SplitText.create(heading, {
+          type: 'lines', mask: 'lines', linesClass: 'reveal-line', autoSplit: true,
+          onSplit(split) {
+            const animation = gsap.from(split.lines, {
+              yPercent: 105, opacity: .15, duration: .82, ease: 'power3.out',
+              stagger: { amount: Math.min(.24, (split.lines.length - 1) * .09) },
+              clearProps: 'opacity,transform', paused: true,
+            })
+            queue(heading, animation)
+            return animation
+          },
+        }))
+      }
+
+      for (const element of qsa<HTMLElement>('[data-reveal]:not(.challenge-timeline)')) {
+        if (!element.closest('.hero')) reveal(element)
+      }
+
+      for (const group of qsa<HTMLElement>('[data-reveal-group]')) {
+        for (const child of groupChildren(group)) reveal(child, group)
+      }
+
+      // The record is the focal beat: an actual count-up, alongside the unchanged zero.
+      // Read targets from the content rather than baking a second number into JS.
+      for (const metric of qsa<HTMLElement>('.challenge__metric')) {
+        const number = metric.querySelector<HTMLElement>('.challenge__number')
+        const label = metric.querySelector<HTMLElement>('.challenge__metric-label')
+        if (!number || !label) continue
+        const finalText = number.textContent ?? ''
+        const target = Number(finalText)
+        if (!Number.isFinite(target)) continue
+        counts.set(number, finalText)
+        const counter = { value: 0 }
+        const sequence = gsap.timeline({ paused: true })
+        sequence.from(number, { opacity: 0, y: 26, ...arrive })
+        sequence.from(label, { opacity: 0, y: 12, ...arrive, duration: .55 }, .12)
+        if (target > 0) {
+          number.textContent = '0'
+          sequence.to(counter, {
+            value: target, duration: 1.75, ease: 'power1.out',
+            onUpdate: () => { number.textContent = String(Math.round(counter.value)) },
+            onComplete: () => { number.textContent = finalText },
+          }, 0)
+        }
+        queue(metric, sequence, metric.parentElement ?? undefined)
+      }
+
+      const globe = document.querySelector<HTMLElement>('.challenge__globe')
+      if (globe) {
+        queue(globe, gsap.from(globe, {
+          opacity: 0, scale: .96, ...arrive, duration: 1, paused: true,
+        }))
+      }
+
+      // Milestones draw in reading order on desktop and at their own scroll
+      // position on mobile, where the timeline becomes a long vertical list.
+      const timelineHead = document.querySelector<HTMLElement>('.challenge-timeline__head')
+      if (timelineHead) reveal(timelineHead)
+      for (const item of qsa<HTMLElement>('.challenge-timeline__item')) {
+        gsap.set(item, { '--timeline-draw': 0, '--timeline-node': 0 })
+        const sequence = gsap.timeline({ paused: true })
+        sequence.to(item, {
+          '--timeline-node': 1, '--timeline-draw': 1, duration: .7, ease: 'power2.out',
+        })
+        sequence.from(qsa('.challenge-timeline__date, .challenge-timeline__body', item), {
+          opacity: 0, y: 18, ...arrive, stagger: .08,
+        }, .08)
+        queue(item, sequence, item.parentElement ?? undefined)
+      }
+
+      // Each image and its copy form one short sequence. Never schedule the next
+      // mobile card before the visitor has reached it.
+      for (const application of qsa<HTMLElement>('.application')) {
+        const frame = application.querySelector('.application__figure')
+        const body = application.querySelector('.application__body')
+        if (!frame || !body) continue
+        const sequence = gsap.timeline({ paused: true })
+        sequence.from(frame, {
+          opacity: .1, clipPath: 'inset(0 0 24% 0)', y: 18,
+          ...arrive, duration: .85, clearProps: 'opacity,transform,clipPath',
+        })
+        sequence.from(body, { opacity: 0, y: 20, ...arrive }, .16)
+        queue(application, sequence, application.parentElement ?? undefined)
+      }
+
+      // The boat camera still owns its tour; only its text children get entrances.
+      for (const copy of qsa<HTMLElement>('.step__copy')) {
+        queue(copy, gsap.from(Array.from(copy.children), {
+          opacity: 0, y: 20, ...arrive, stagger: .08, paused: true,
+        }))
+      }
+
+      const newsNav = document.querySelector<HTMLElement>('.news-page__nav-inner')
+      if (newsNav) gsap.from(newsNav, { opacity: 0, y: -8, ...arrive, duration: .5 })
+      for (const story of qsa<HTMLElement>('.news-page__grid > li')) {
+        reveal(story, story.parentElement ?? undefined)
+      }
+
+      return () => {
+        observer.disconnect()
+        edgeObserver.disconnect()
+        document.removeEventListener('focusin', onFocus)
+        splits.forEach(split => split.revert())
+        counts.forEach((value, number) => { number.textContent = value })
+        document.documentElement.classList.remove('motion-ready')
+      }
+    })
+  })
 }

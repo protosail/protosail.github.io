@@ -4,7 +4,7 @@
  *
  * Lenis runs in native-scroll mode (it drives window.scrollY), so `position: sticky`
  * and IntersectionObserver keep working and ScrollTrigger needs no scroller proxy. It
- * disables its own smoothing under prefers-reduced-motion; `instant` additionally
+ * disables smoothing for the explicit reduced-motion mode; `instant` additionally
  * covers the screenshot harness (`?shots`), where every reveal should land at once.
  *
  * In-page anchors are handled here rather than by Lenis, so that one rule — the
@@ -24,8 +24,8 @@ gsap.registerPlugin(ScrollTrigger, SplitText, DrawSVGPlugin)
 
 const params = new URLSearchParams(window.location.search)
 
-// Full motion is the authored default. The URL keeps a deliberate reduced-motion
-// path available for visitors, QA and embedded presentations.
+// Full motion is the default on every device. Reduced motion remains an explicit
+// URL option; system settings do not silently hide the authored entrances.
 export const reducedMotion = params.get('motion') === 'reduce'
 document.documentElement.dataset.motion = reducedMotion ? 'reduce' : 'full'
 /** No smoothing, no reveals: reduced motion, or the screenshot harness. */

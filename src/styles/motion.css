@@ -1,3 +1,4 @@
+html[data-motion='reduce'],
 html[data-motion='reduce'] *,
 html[data-motion='reduce'] *::before,
 html[data-motion='reduce'] *::after {

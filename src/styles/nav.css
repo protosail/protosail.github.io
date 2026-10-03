@@ -184,9 +184,10 @@
   .brand-ucl { width: 60px; }
 }
 @media (max-width: 559px) { .nav__sub { display: none; } }
-@media (prefers-reduced-motion: reduce) {
-  .nav, .nav::before, .nav *, .nav *::after { transition: none; }
-}
+html[data-motion='reduce'] .nav,
+html[data-motion='reduce'] .nav::before,
+html[data-motion='reduce'] .nav *,
+html[data-motion='reduce'] .nav *::after { transition: none; }
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
   .nav::before { background: rgb(5 8 13 / 88%); }
 }

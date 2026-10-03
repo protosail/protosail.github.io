@@ -29,13 +29,13 @@
 }
 
 .news-page__main {
-  padding-block: clamp(4rem, 8vw, 8rem);
+  padding-block: var(--section-y);
 }
 
 .news-page__head {
   display: grid;
   gap: var(--s-5);
-  margin-bottom: var(--s-8);
+  margin-bottom: var(--s-7);
 }
 
 .news-page__head .h2 {
@@ -68,7 +68,7 @@
   }
 
   .news-page__main {
-    padding-block: var(--s-8);
+    padding-block: 3rem;
   }
 
   .news-page__grid {
